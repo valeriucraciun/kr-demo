@@ -1,0 +1,25 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 180000
+
+# - Ribbon connection timeout * 3 >= Hystrix timeout #
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  routes:
+    demo-service:
+      path: /demo/**
+      service-id: demo-service
+
+server:
+  port: 4000

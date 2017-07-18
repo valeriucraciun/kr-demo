@@ -3,6 +3,8 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PatientController {
 
+	@Autowired
+	Environment environment;
+	
 	private static List<Patient> patients = new ArrayList<>();
 	static {
 		patients.add(new Patient(1, "Grigore", "Ioan"));
@@ -23,7 +28,12 @@ public class PatientController {
 
 	@RequestMapping(value = "/patient/read", produces = { "application/json" }, method = RequestMethod.GET)
 	public ResponseEntity<Patient> getPatient(@RequestParam(value = "id") Integer id) {
-		return ResponseEntity.ok().body(searchById(id));
+		Patient pat = searchById(id);
+		if(pat != null) {
+			pat.setPort(environment.getProperty("server.port"));
+		}
+		
+		return ResponseEntity.ok().body(pat);
 	}
 	
 	@RequestMapping(value = "/patient/list", produces = { "application/json" }, method = RequestMethod.GET)
