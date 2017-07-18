@@ -23,12 +23,6 @@ repositories {
 }
 
 dependencies {
-	compile("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
-	compile("org.springframework.cloud:spring-cloud-starter-eureka:$springCloudVersion")
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
+	compile("org.springframework.cloud:spring-cloud-config-server:$springCloudVersion")
+	testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
