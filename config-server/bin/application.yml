@@ -1,0 +1,32 @@
+info:
+  component: Spring Cloud Config Server
+
+
+# Default (Local) configuration  
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared, classpath:/dev
+  profiles:
+     active: native
+     
+management:
+  security:
+    enabled: false
+  
+
+server:
+  port: 8888
+
+  
+# Docker containers deployment configurations
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared, classpath:/docker
