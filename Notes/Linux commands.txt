@@ -26,5 +26,15 @@ sudo apt-get -y install python-pip
 sudo pip install docker-compose
 docker-compose -version
 
+Before starting build all services:
+./build.sh
+
+Starting a docker compose environment:
+ docker-compose -f demo-ms-compose.yml up -d --build --force-recreate
  
+Stop/Remove a docker compose environment:
+ docker-compose -f demo-ms-compose.yml down
+ 
+
+
  
