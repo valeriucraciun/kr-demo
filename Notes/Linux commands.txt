@@ -3,3 +3,19 @@ Install java 8:
 sudo add-apt-repository ppa:webupd8team/java -y
 sudo apt-get update
 sudo apt-get install oracle-java8-set-default
+
+Clone git repository:
+git clone https://github.com/valeriucraciun/kr-demo.git
+
+OR pull lastest changes:
+git pull
+
+
+cd kr-demo/config-server
+
+chmod 755 gradlew
+./gradlew clean build
+docker build -t "config-server" .
+docker run -dt -p "8888:8888" config-server
+ 
+ 
