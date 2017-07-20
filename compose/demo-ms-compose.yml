@@ -7,3 +7,10 @@ services:
     ports:
       - 8888:8888
     restart: always
+    
+  patient-service:
+    build: ../demo
+    image: demo/patient-service
+    ports:
+      - 8080:8080
+    restart: always
