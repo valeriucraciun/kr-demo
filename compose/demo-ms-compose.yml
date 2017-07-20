@@ -8,6 +8,24 @@ services:
       - 8888:8888
     restart: always
     
+  discovery-server:
+    build: ../discovery-server
+    image: demo/discovery-server
+    ports:
+      - 8761:8761
+    depends_on:
+      - config-server
+    restart: always
+    
+  edge-server:
+    build: ../edge-server
+    image: demo/edge-server
+    ports:
+      - 4000:4000
+    depends_on:
+      - config-server
+    restart: always
+    
   patient-service:
     build: ../demo
     image: demo/patient-service
