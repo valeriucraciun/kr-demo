@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  config-server:
+    build: ../config-server
+    image: demo/config-server
+    ports:
+      - 8888:8888
+    restart: always
