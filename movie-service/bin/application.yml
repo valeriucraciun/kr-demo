@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://192.168.1.161:3306/movie
+    username: root
+    password: password
+  jackson:
+    default-property-inclusion: NON_NULL
+server:
+  port: 9595
